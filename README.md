@@ -1,16 +1,33 @@
-# mdc_101
+# Material Design Component
 
-A new Flutter project.
+Aplikasi saya berfokus pada penjualan makanan lewat online dari aplikasi
 
-## Getting Started
+## Fitur
+- Login
+- Register
+- Melihat Detail
 
-This project is a starting point for a Flutter application.
+## Cara Instalasi
 
-A few resources to get you started if this is your first Flutter project:
+Berikut cara menjalankan proyek Flutter ini di komputer Anda:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+1. **Clone repository:**
+   ```bash
+   git clone https://github.com/Roczantya/Mdc_Tiffany-Tjandinegara.git
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+2. **Pindah ke direktori proyek**
+     ```bash
+     cd nama-proyek
+3. **Instal depedencies**
+     ```bash
+     flutter pubget
+4. **jalankan aplikasi**
+     ```bash
+     flutter run
+
+## Teknologi yang Digunakan
+- Flutter
+- Dart
+- Library Tambahan: Lottie, Google Fonts, Smooth package indicators
+
+
