@@ -508,11 +508,93 @@ class DashboardPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Dashboard'),
         backgroundColor: Color.fromARGB(250, 7, 204, 89),
-        leading: IconButton(
-          icon: const Icon(Icons.menu),
-          onPressed: () {
-            Scaffold.of(context).openDrawer();
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: const Icon(Icons.menu),
+              onPressed: () {
+                Scaffold.of(context)
+                    .openDrawer(); // Open the sidebar when the menu is tapped
+              },
+            );
           },
+        ),
+        actions: <Widget>[
+          // Search and Filter Icons
+          IconButton(
+            icon: const Icon(Icons.search),
+            onPressed: () {
+              print('Search button');
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.filter_list),
+            onPressed: () {
+              print('Filter button');
+            },
+          ),
+        ],
+      ),
+      drawer: Drawer(
+        // Set background color for the sidebar (green)
+        child: Container(
+          color: Color.fromARGB(250, 7, 204, 89), // Green color for sidebar
+          child: Column(
+            children: [
+              // Sidebar Header (optional)
+              UserAccountsDrawerHeader(
+                decoration: BoxDecoration(
+                  color: Color.fromARGB(
+                      250, 7, 204, 89), // Matching green color for header
+                ),
+                accountName:
+                    Text("Username", style: TextStyle(color: Colors.white)),
+                accountEmail: Text("user@example.com",
+                    style: TextStyle(color: Colors.white)),
+                currentAccountPicture: CircleAvatar(
+                  backgroundColor: Colors.white,
+                  child: Icon(Icons.person, color: Colors.green),
+                ),
+              ),
+              // Menu Items
+              ListTile(
+                leading: const Icon(Icons.home, color: Colors.white),
+                title:
+                    const Text('Home', style: TextStyle(color: Colors.white)),
+                onTap: () {
+                  Navigator.pop(context); // Close the drawer
+                  print('Home clicked');
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.info, color: Colors.white),
+                title:
+                    const Text('About', style: TextStyle(color: Colors.white)),
+                onTap: () {
+                  Navigator.pop(context); // Close the drawer
+                  print('About clicked');
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.shop, color: Colors.white),
+                title:
+                    const Text('Shop', style: TextStyle(color: Colors.white)),
+                onTap: () {
+                  Navigator.pop(context); // Close the drawer
+                  print('Shop clicked');
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.chat, color: Colors.white),
+                title:
+                    const Text('Chat', style: TextStyle(color: Colors.white)),
+                onTap: () {
+                  Navigator.pop(context); // Close the drawer
+                  print('Chat clicked');
+                },
+              ),
+            ],
+          ),
         ),
       ),
       body: GridView.builder(
