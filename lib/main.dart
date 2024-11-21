@@ -102,12 +102,13 @@ class _MyHomePageState extends State<MyHomePage> {
                       horizontal: 24.0, vertical: 16.0),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30.0),
-                    borderSide:
-                        const BorderSide(color: Colors.orange, width: 2),
+                    borderSide: const BorderSide(
+                        color: Color.fromARGB(255, 32, 236, 141), width: 2),
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30.0),
-                    borderSide: const BorderSide(color: Colors.orange),
+                    borderSide: const BorderSide(
+                        color: Color.fromARGB(255, 32, 234, 197)),
                   ),
                 ),
               ),
@@ -126,12 +127,14 @@ class _MyHomePageState extends State<MyHomePage> {
                       horizontal: 24.0, vertical: 16.0),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30.0),
-                    borderSide:
-                        const BorderSide(color: Colors.orange, width: 2),
+                    borderSide: const BorderSide(
+                        color: Color.fromARGB(255, 10, 192, 86), width: 2),
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30.0),
-                    borderSide: const BorderSide(color: Colors.orange),
+                    borderSide: const BorderSide(
+                      color: Color.fromARGB(255, 32, 234, 197),
+                    ),
                   ),
                 ),
               ),
@@ -332,8 +335,8 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
-                    borderSide:
-                        const BorderSide(color: Colors.orange, width: 2),
+                    borderSide: const BorderSide(
+                        color: Color.fromARGB(255, 40, 237, 162), width: 2),
                   ),
                 ),
                 obscureText: true,
