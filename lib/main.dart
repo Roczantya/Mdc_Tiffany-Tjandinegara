@@ -34,114 +34,164 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-      body: SafeArea(
-        child: ListView(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0),
-          children: <Widget>[
-            Column(
-              children: <Widget>[
-                // Teks Selamat Datang di FoodMart di atas animasi
-                Text(
-                  'Selamat Datang di FoodMart',
-                  style: GoogleFonts.montserrat(
-                    fontSize: 27,
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color.fromARGB(255, 245, 245, 245),
+              Color.fromARGB(255, 52, 238, 185)
+            ], // Gradient background
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+        child: SafeArea(
+          child: ListView(
+            padding: const EdgeInsets.symmetric(horizontal: 24.0),
+            children: <Widget>[
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  const SizedBox(height: 30.0), // Spacing from the top
+
+                  // Welcome Text
+                  Text(
+                    'Selamat Datang di FoodMart',
+                    style: GoogleFonts.montserrat(
+                      fontSize: 27,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black87,
+                    ),
+                  ),
+                  const SizedBox(height: 20.0),
+
+                  // Curved Animation with Rounded Borders
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(20.0),
+                    child: Lottie.asset(
+                      'assets/Foodlogin.json',
+                      width: 220.0,
+                      height: 220.0,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  const SizedBox(height: 15.0),
+
+                  // Login Text
+                  Text(
+                    'Login',
+                    style: GoogleFonts.abhayaLibre(
+                      fontSize: 28,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black87,
+                    ),
+                  ),
+                  const SizedBox(height: 30.0),
+                ],
+              ),
+
+              // Username Field
+              TextField(
+                controller: _usernameController,
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.grey[200],
+                  labelText: 'Username',
+                  labelStyle: const TextStyle(color: Colors.grey),
+                  contentPadding: const EdgeInsets.symmetric(
+                      horizontal: 24.0, vertical: 16.0),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30.0),
+                    borderSide:
+                        const BorderSide(color: Colors.orange, width: 2),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30.0),
+                    borderSide: const BorderSide(color: Colors.orange),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10.0),
+
+              // Password Field
+              TextField(
+                controller: _passwordController,
+                obscureText: true,
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.grey[200],
+                  labelText: 'Password',
+                  labelStyle: const TextStyle(color: Colors.grey),
+                  contentPadding: const EdgeInsets.symmetric(
+                      horizontal: 24.0, vertical: 16.0),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30.0),
+                    borderSide:
+                        const BorderSide(color: Colors.orange, width: 2),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30.0),
+                    borderSide: const BorderSide(color: Colors.orange),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10.0),
+
+              // Register Text Button
+              OverflowBar(
+                alignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  TextButton(
+                    child: const Text(
+                      'Belum Login? Register Dulu',
+                      style: TextStyle(
+                        color: Colors.orange,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    onPressed: () {
+                      // Navigate to RegisterPage
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const RegisterPage()),
+                      );
+                    },
+                  ),
+                ],
+              ),
+              const SizedBox(height: 10.0),
+
+              // Login Button
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.white,
+                  backgroundColor: Colors.green, // Background color for button
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(25.0),
+                  ),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: MediaQuery.of(context).size.width * 0.15,
+                    vertical: 16.0,
+                  ),
+                  textStyle: const TextStyle(
+                    fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 20.0), // Jarak antara teks dan animasi
-
-                // Animasi JSON di bawah teks
-                Lottie.asset(
-                  'assets/Foodlogin.json',
-                  width: 200.0,
-                  height: 200.0,
-                  fit: BoxFit.cover,
-                ),
-                const SizedBox(height: 10.0),
-                Text(
-                  'Login',
-                  style: GoogleFonts.abhayaLibre(
-                      fontSize: 25, fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-            const SizedBox(height: 30.0),
-            // Field Username
-            TextField(
-              controller: _usernameController,
-              decoration: const InputDecoration(
-                filled: true,
-                labelText: 'Username',
-                contentPadding:
-                    EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(30)),
-                  borderSide: BorderSide(color: Colors.orange, width: 2),
-                ),
+                onPressed: () {
+                  // Action on Login button pressed
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const Onboardingpage()),
+                  );
+                },
+                child: const Text('Login'),
               ),
-            ),
-            const SizedBox(height: 20.0),
-            // Field Password
-            TextField(
-              controller: _passwordController,
-              obscureText: true,
-              decoration: const InputDecoration(
-                filled: true,
-                labelText: 'Password',
-                contentPadding:
-                    EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(30)),
-                  borderSide: BorderSide(color: Colors.orange, width: 2),
-                ),
-              ),
-            ),
-            const SizedBox(height: 20.0),
-            // Tombol untuk Register
-            OverflowBar(
-              alignment: MainAxisAlignment.end,
-              children: <Widget>[
-                TextButton(
-                  child: const Text('Belum Login? Register Dulu'),
-                  onPressed: () {
-                    // Navigasi ke halaman RegisterPage
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const RegisterPage()),
-                    );
-                  },
-                ),
-              ],
-            ),
-            const SizedBox(height: 20.0),
-            // Tombol Login
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                foregroundColor: Colors.black,
-                backgroundColor: Colors.green, // Warna background tombol
-                padding: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.of(context).size.width * 0.03,
-                  vertical: MediaQuery.of(context).size.height * 0.03,
-                ),
-                textStyle: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              onPressed: () {
-                // Aksi saat tombol Login ditekan
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const Onboardingpage()),
-                );
-              },
-              child: const Text('Login'),
-            ),
-            const SizedBox(height: 10.0),
-          ],
+              const SizedBox(height: 20.0),
+            ],
+          ),
         ),
       ),
     );
@@ -160,117 +210,168 @@ class _RegisterPageState extends State<RegisterPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 46, 2, 2),
-      body: SafeArea(
-        child: ListView(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0),
-          children: <Widget>[
-            Column(
-              children: <Widget>[
-                // Teks Selamat Datang di FoodMart di atas animasi
-                Text(
-                  'Selamat Datang di FoodMart',
-                  style: GoogleFonts.montserrat(
-                    color: Colors.white,
-                    fontSize: 27,
-                    fontWeight: FontWeight.bold,
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color.fromARGB(255, 252, 102, 102),
+              Color(0xFFFF8E53)
+            ], // Gradient background
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+        child: SafeArea(
+          child: ListView(
+            padding: const EdgeInsets.symmetric(horizontal: 24.0),
+            children: <Widget>[
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  // Welcome Text
+                  Text(
+                    'Selamat Datang di FoodMart',
+                    style: GoogleFonts.montserrat(
+                      color: Colors.white,
+                      fontSize: 28,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 30.0), // Space between text and image
+
+                  // Rounded Corners for Image
+                  ClipRRect(
+                    borderRadius:
+                        BorderRadius.circular(15.0), // Slightly rounded corners
+                    child: Image.asset(
+                      'assets/Pecellele.jpeg',
+                      width: 300.0,
+                      height: 200.0,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  const SizedBox(height: 20.0),
+
+                  // Register Title
+                  Text(
+                    'Register',
+                    style: GoogleFonts.abhayaLibre(
+                      color: Colors.white,
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 40.0),
+
+              // Username Field
+              TextField(
+                controller: _usernameController,
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.white.withOpacity(0.9),
+                  labelText: 'Username',
+                  labelStyle: const TextStyle(color: Colors.black),
+                  contentPadding: const EdgeInsets.symmetric(
+                      horizontal: 24.0, vertical: 12.0),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                    borderSide: const BorderSide(color: Colors.white, width: 2),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                    borderSide:
+                        const BorderSide(color: Colors.orange, width: 2),
                   ),
                 ),
-                const SizedBox(height: 20.0), // Jarak antara teks dan animasi
+              ),
+              const SizedBox(height: 15.0),
 
-                // Animasi JSON di bawah teks
-                Image.asset(
-                  'assets/Pecellele.jpeg',
-                  width: 300.0,
-                  height: 200.0,
-                  fit: BoxFit.cover,
+              // Email Field
+              TextField(
+                controller: _emailController,
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.white.withOpacity(0.9),
+                  labelText: 'Email Address',
+                  labelStyle: const TextStyle(color: Colors.black),
+                  contentPadding: const EdgeInsets.symmetric(
+                      horizontal: 24.0, vertical: 12.0),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                    borderSide: const BorderSide(color: Colors.white, width: 2),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                    borderSide:
+                        const BorderSide(color: Colors.orange, width: 2),
+                  ),
                 ),
-                const SizedBox(height: 10.0),
-                Text(
-                  'Register',
-                  style: GoogleFonts.abhayaLibre(
-                      color: Colors.white,
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-            const SizedBox(height: 30.0),
-            // Field Username
-            TextField(
-              controller: _usernameController,
-              decoration: const InputDecoration(
-                filled: true,
-                labelText: 'Username',
-                contentPadding:
-                    EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  borderSide: BorderSide(color: Colors.orange, width: 2),
-                ),
+                obscureText: true,
               ),
-            ),
-            const SizedBox(height: 20.0),
-            // Field Password
-            TextField(
-              controller: _emailController,
-              obscureText: true,
-              decoration: const InputDecoration(
-                filled: true,
-                labelText: 'Email Address',
-                contentPadding:
-                    EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  borderSide: BorderSide(color: Colors.orange, width: 2),
+              const SizedBox(height: 15.0),
+
+              // Password Field
+              TextField(
+                controller: _passwordController,
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.white.withOpacity(0.9),
+                  labelText: 'Password',
+                  labelStyle: const TextStyle(color: Colors.black),
+                  contentPadding: const EdgeInsets.symmetric(
+                      horizontal: 24.0, vertical: 12.0),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                    borderSide: const BorderSide(color: Colors.white, width: 2),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                    borderSide:
+                        const BorderSide(color: Colors.orange, width: 2),
+                  ),
                 ),
+                obscureText: true,
               ),
-            ),
-            const SizedBox(height: 20.0),
-            // Field Password
-            TextField(
-              controller: _passwordController,
-              obscureText: true,
-              decoration: const InputDecoration(
-                filled: true,
-                labelText: 'Password',
-                contentPadding:
-                    EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  borderSide: BorderSide(color: Colors.orange, width: 2),
+              const SizedBox(height: 25.0),
+
+              // Login Button
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius:
+                        BorderRadius.circular(20), // Rounded corners for button
+                  ),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: MediaQuery.of(context).size.width * 0.03,
+                    vertical: MediaQuery.of(context).size.height * 0.03,
+                  ),
+                  backgroundColor:
+                      const Color.fromARGB(255, 180, 51, 5), // New button color
+                  foregroundColor: Colors.white, // Text color
+                  elevation: 5, // Shadow effect
+                  textStyle: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
+                onPressed: () {
+                  // Action when the login button is pressed
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MyHomePage()),
+                  );
+                },
+                child: const Text('Register'),
               ),
-            ),
-            const SizedBox(height: 20.0),
-            // Tombol Login
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                foregroundColor: Colors.black,
-                backgroundColor: Colors.green, // Warna background tombol
-                padding: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.of(context).size.width * 0.03,
-                  vertical: MediaQuery.of(context).size.height * 0.03,
-                ),
-                textStyle: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              onPressed: () {
-                // Aksi saat tombol Login ditekan
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const MyHomePage()),
-                );
-              },
-              child: const Text('Login'),
-            ),
-            const SizedBox(height: 10.0),
-          ],
+              const SizedBox(height: 20.0),
+            ],
+          ),
         ),
       ),
     );
@@ -429,6 +530,17 @@ class _OnboardingpageState extends State<Onboardingpage> {
           const SizedBox(height: 30),
           if (isLastPage)
             ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.green, // Set button color to green
+                foregroundColor: Colors.white, // Set text color to white
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0), // Rounded corners
+                ),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 32.0,
+                  vertical: 12.0,
+                ),
+              ),
               onPressed: () {
                 Navigator.pushReplacement(
                   context,
