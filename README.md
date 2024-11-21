@@ -5,6 +5,9 @@ Aplikasi saya berfokus pada penjualan makanan lewat online dari aplikasi
 ## Fitur
 - Login
 - Register
+- Onboarding
+- Splash Screen
+- Dashboard
 - Melihat Detail
 
 ## Cara Instalasi
