@@ -212,7 +212,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final _usernameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
@@ -561,11 +561,13 @@ class _OnboardingpageState extends State<Onboardingpage> {
 class DetailPage extends StatelessWidget {
   final String itemTitle;
   final String itemImage;
+  final String itemprice;
 
   const DetailPage({
     Key? key,
     required this.itemTitle,
     required this.itemImage,
+    required this.itemprice,
   }) : super(key: key);
 
   @override
@@ -592,28 +594,34 @@ class DetailPage extends StatelessWidget {
 class DashboardPage extends StatelessWidget {
   final List<Map<String, String>> items = [
     {
-      'title': 'Item 1',
+      'title': 'Es buah',
       'image': 'assets/esbuah.jpeg',
+      'price': 'Rp 30,000',
     },
     {
-      'title': 'Item 2',
+      'title': 'Rujak Buah',
       'image': 'assets/Rujak buah.jpeg',
+      'price': 'Rp 20,000',
     },
     {
-      'title': 'Item 3',
+      'title': 'Sushi',
       'image': 'assets/sushi.jpeg',
+      'price': 'Rp 65,000',
     },
     {
-      'title': 'Item 4',
+      'title': 'Pecel lele',
       'image': 'assets/Pecellele.jpeg',
+      'price': 'Rp 15,000',
     },
     {
-      'title': 'Item 5',
+      'title': 'Es dawet',
       'image': 'assets/esbuah.jpeg',
+      'price': 'Rp 25,000',
     },
     {
-      'title': 'Item 6',
+      'title': 'Maki Sushi',
       'image': 'assets/sushi.jpeg',
+      'price': 'Rp 45,000',
     },
   ];
 
@@ -731,6 +739,7 @@ class DashboardPage extends StatelessWidget {
                   builder: (context) => DetailPage(
                     itemTitle: items[index]['title']!,
                     itemImage: items[index]['image']!,
+                    itemprice: items[index]['price']!,
                   ),
                 ),
               );
@@ -745,7 +754,8 @@ class DashboardPage extends StatelessWidget {
                   children: [
                     ClipRRect(
                       borderRadius: const BorderRadius.vertical(
-                          top: Radius.circular(12.0)),
+                        top: Radius.circular(12.0),
+                      ),
                       child: Image.asset(
                         item['image']!,
                         fit: BoxFit.cover,
@@ -756,7 +766,18 @@ class DashboardPage extends StatelessWidget {
                     Text(
                       item['title']!,
                       style: const TextStyle(
-                          fontSize: 16, fontWeight: FontWeight.bold),
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(
+                        height: 4.0), // Space between title and price
+                    Text(
+                      item['price']!,
+                      style: const TextStyle(
+                        fontSize: 14,
+                        color: Colors.grey,
+                      ),
                     ),
                   ],
                 ),
