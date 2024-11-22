@@ -23,7 +23,7 @@ Berikut cara menjalankan proyek Flutter ini di komputer Anda:
      cd nama-proyek
 3. **Instal depedencies**
      ```bash
-     flutter pubget
+     flutter pub get
 4. **jalankan aplikasi**
      ```bash
      flutter run
